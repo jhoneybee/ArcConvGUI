@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+﻿cmake_minimum_required(VERSION 3.5)
 
 project(ArcConvGUI LANGUAGES CXX)
 
@@ -33,6 +33,10 @@ if(ANDROID)
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    filetree.cpp
+    filetree.h
+    unpack.cpp
+    unpack.h
   )
 else()
   add_executable(ArcConvGUI
@@ -40,6 +44,10 @@ else()
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    filetree.cpp
+    filetree.h
+    unpack.cpp
+    unpack.h
   )
 endif()
 
