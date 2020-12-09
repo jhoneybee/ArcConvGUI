@@ -6,6 +6,11 @@
 #include <QDir>
 #include <QStandardItemModel>
 #include <QColor>
+#include <QMenu>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QVariant>
+
 #include "unpack.h"
 
 class FileTree : public QObject
@@ -17,7 +22,16 @@ public:
     void reload(QString path, QStandardItem *model = nullptr);
     QStandardItemModel *model = new QStandardItemModel();
 private:
+    QString path;
+    QStandardItem *item;
     QTreeView *treeView;
+    Unpack *pack;
+    QStringList findWolf(QString path);
+    void reloadTree(QString path, QStandardItem *item);
+private slots:
+    void onComplete();
+    void slotCustomContextMenu(const QPoint &);
+    void triggeredOpen();
 };
 
 #endif // FILETREE_H

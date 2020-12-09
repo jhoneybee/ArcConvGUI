@@ -1,10 +1,21 @@
 ﻿#include "unpack.h"
 
-Unpack::Unpack() {
+Unpack::Unpack(int taskNum) {
+    this->taskNum = taskNum;
+
 }
 
 void Unpack::wolf(QString path){
     QStringList params;
     params << path;
-    QProcess::startDetached("WolfDec", params);
+    process = new QProcess();
+    connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onFinished(int, QProcess::ExitStatus)));
+    process->start("WolfDec", params);
+}
+
+void Unpack::onFinished(int exitCode, QProcess::ExitStatus exitStatus){
+    --taskNum;
+    if (taskNum < 1) {
+        emit onComplete();
+    }
 }

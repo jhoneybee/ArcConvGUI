@@ -28,7 +28,7 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 if(ANDROID)
-  add_library(ArcConvGUI SHARED
+  add_library(ArcConvGUI WIN32 SHARED
     main.cpp
     mainwindow.cpp
     mainwindow.h
@@ -39,7 +39,7 @@ if(ANDROID)
     unpack.h
   )
 else()
-  add_executable(ArcConvGUI
+  add_executable(ArcConvGUI WIN32
     main.cpp
     mainwindow.cpp
     mainwindow.h
